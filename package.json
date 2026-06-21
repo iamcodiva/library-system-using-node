@@ -18,7 +18,9 @@
   "homepage": "https://github.com/iamcodiva/library-system-using-node#readme",
   "description": "",
   "dependencies": {
+    "ejs": "^6.0.1",
     "expess": "^0.0.1-security",
+    "express": "^5.2.1",
     "mysql2": "^3.22.5"
   }
 }

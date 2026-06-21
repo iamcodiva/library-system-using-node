@@ -1,4 +1,13 @@
 const userModel=require("../models/userModel");
+function showHome(req,res){
+res.render('index');
+}
+function showAbout(req,res){
+res.render('About');
+}
+function showContact(req,res){
+res.render('Contact');
+}
 function showSignup(req,res){
 res.render("register");
 }
@@ -24,4 +33,4 @@ if(userModel.findbyEmail){
 }
 
 }
-module.exports={showSignup,handleSignup,showLogin,handleLogin}
+module.exports={showSignup,handleSignup,showLogin,handleLogin,showHome,showAbout,showContact}
