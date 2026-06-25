@@ -1,10 +1,22 @@
+require("dotenv").config();
 const express = require("express");
-const app = express();
+const session=require('express-session');
 const authRouter = require("./src/routes/authRoute");
+const app = express();
+
+
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
-
+app.use(session({
+  secret:process.env.SESSION_KEY,
+  resave:false,
+  saveUninitialized:false, 
+  cookie:{
+    secure:false,
+    maxAge:360000
+  }
+}));
 app.use("/", authRouter);
 
 app.listen(3000, () => {

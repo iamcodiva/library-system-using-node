@@ -5,23 +5,36 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>signup</title>
+  <link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
   <h1>SignUp Form</h1>
-  <form action="/signup">
-    <label for="firstName">First Name:</label><br>
-    <input type="text" name="firstName"><br>
-    <label for="lastName">Last Name:</label><br>
-    <input type="text" name="lastName"><br>
-    <label for="email">Email:</label><br>
-    <input type="text" name="email"><br>
-    <label for="password">password:</label><br>
-    <input type="text" name="password"><br>
-    <label for="confirmPassword">Confrim password:</label><br>
-    <input type="text" name="confirmPassword"><br><br>
-    <input type="submit" value="signup">
-  </form>
+  <% if(locals.err){ %>
+    <div class="error-block">
+      <p>
+        <%= err %>
+      </p>
+    </div>
+    <% } %>
+      <form action="/signup" method="POST">
+        <label for="firstName">First Name:</label><br>
+        <input type="text" name="firstName"
+          class="<%= locals.errfield && locals.errfield.includes('firstName')?'input-error':'' %>"  value="<%=locals.values && locals.values.firstName?values.firstName:'' %>"><br>
+        <label for="lastName">Last Name:</label><br>
+        <input type="text" name="lastName"
+          class="<%= locals.errfield && locals.errfield.includes('lastName')?'input-error':'' %>"   value="<%=locals.values && locals.values.lastName?locals.values.lastName:''%>"> <br>
+        <label for="email">Email:</label><br>
+        <input type="text" name="email"
+          class="<%= locals.errfield && locals.errfield.includes('email')?'input-error':'' %>"  value="<%=locals.values &&locals.values.email?locals.values.email:''%>"><br>
+        <label for="password">password:</label><br>
+        <input type="text" name="password"
+          class="<%= locals.errfield && locals.errfield.includes('password')?'input-error':'' %>" value="<%=locals.values && locals.values.password?locals.values.password:''%>"><br>
+        <label for="confirmPassword">Confrim password:</label><br>
+        <input type="text" name="confirmPassword"
+          class="<%= locals.errfield && locals.errfield.includes('confirmPassword')?'input-error':'' %>" value="<%=locals.values && locals.values.confirmPassword?locals.values.confirmPassword:'' %>"><br><br>
+        <input type="submit" value="signup">
+      </form>
 </body>
 
 </html>

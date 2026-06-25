@@ -9,6 +9,6 @@ authRouter.get('/Contact',authController.showContact);
 authRouter.get('/signup',authController.showSignup);
 authRouter.post('/signup',authController.handleSignup);
 authRouter.get('/login',authController.showLogin);
-authRouter.post('/login',authController.handleLogin)
-
+authRouter.post('/login',authController.handleLogin);
+authRouter.get('/logout',authController.handleLogout);
 module.exports=authRouter;

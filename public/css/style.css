@@ -51,3 +51,15 @@ align-items: center;
 .mobile-menu-button{
   display:none;
 }
+
+.error-block{
+background-color: rgb(255, 62, 62);
+color: rgb(255, 204, 204);
+width:50%;
+border-radius: 5px;
+text-align: center;
+}
+.input-error{
+  border-color: rgb(107, 9, 9);
+
+}

@@ -18,9 +18,12 @@
   "homepage": "https://github.com/iamcodiva/library-system-using-node#readme",
   "description": "",
   "dependencies": {
+    "bcrypt": "^6.0.0",
+    "dotenv": "^17.4.2",
     "ejs": "^6.0.1",
     "expess": "^0.0.1-security",
     "express": "^5.2.1",
+    "express-session": "^1.19.0",
     "mysql2": "^3.22.5"
   }
 }
