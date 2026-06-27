@@ -25,16 +25,36 @@
     <div class="side-nav">
       <div class="side-nav-container">
       <div class="option">Overview</div>
+      <% if(role=="Member"){%>
+
       <div class="option">Catalog</div>
       <div class="option">My Borrowing</div>
       <div class="option">My Finance</div>
-      <div class="option">Peofile</div>
+      
+<%  }%>
+<% if(role=='Staff') {%>
+       <div class="option">Catalog and Circulation</div> 
+       <div class="option">Users</div>
+       <div class="option">Borrowing activity</div>
+       <div class="option">Finance</div>
+
+  <% } %>
+<% if (role=='Admin'){%>
+      <div class="option">Book managment</div> 
+       <div class="option">Borrowing Activity</div>
+       <div class="option">Finance</div>
+       <div class="option">Member Managment</div>
+       <div class="option">Staff and Admin Managment</div>
+       <div class="option">Reports</div>
+
+<%} %>
+        <div class="option">Profile</div>
       </div>
     </div>
   </header>
   <main>
   <h1>
-    Hello,<%=firstName %>
+    Hello,<%=firstName  %>(<%= role %>)
   </h1>
   </main>
 </body>

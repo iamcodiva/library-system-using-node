@@ -2,6 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const session=require('express-session');
 const authRouter = require("./src/routes/authRoute");
+const dashboardRouter = require("./src/routes/dashboardRoute");
 const app = express();
 
 
@@ -18,6 +19,7 @@ app.use(session({
   }
 }));
 app.use("/", authRouter);
+app.use('/dashboard',dashboardRouter)
 
 app.listen(3000, () => {
   console.log("i am listening");

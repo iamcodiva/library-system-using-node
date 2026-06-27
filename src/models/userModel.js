@@ -1,11 +1,11 @@
 const db=require('../config/db');
 const bcrypt=require("bcrypt");
 const userModel={
-  create: (firstName,lastName,email,password)=>{
+  create: (firstName,lastName,email,password,role)=>{
     return new Promise(async (resolve,reject)=>{
       const hashPassword=await bcrypt.hash(password,10);
-      const sql="INSERT INTO users(firstName,lastName,email,userPassword) VALUES(?,?,?,?)";
-      db.query(sql,[firstName,lastName,email,hashPassword],(err,res)=>{
+      const sql="INSERT INTO users(firstName,lastName,email,userPassword,userRole) VALUES(?,?,?,?,?)";
+      db.query(sql,[firstName,lastName,email,hashPassword,role],(err,res)=>{
       if(err){
         console.log(err);
       }

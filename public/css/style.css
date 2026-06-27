@@ -99,3 +99,7 @@ text-align: center;
   background-color:rgb(104, 166, 247);
   
 }
+main{
+  transform: translateX(250px);
+  padding:30px ;
+}

@@ -33,7 +33,8 @@ async function handleSignup(req,res){
           const err="This Email is already Rigistred";
           return res.render("register",{err,errfield:['email'],values:{firstName:firstName,lastName:lastName,email:email,password:password,confirmPassword:confirmPassword}});
         }else{
-           userModel.create(firstName,lastName,email,password);
+          const role='Member';
+           userModel.create(firstName,lastName,email,password,role);
           return res.redirect('/login');
         }
       }else{
@@ -57,10 +58,13 @@ if(email.trim()==''||password.trim()==''){
     const userPassword=emailExist.userPassword;
     const ComparePassword=await bcrypt.compare(password,userPassword);
     if(ComparePassword){
-      req.session.userId=emailExist.id;
-      req.session.email=emailExist.email;
-      req.session.firstName=emailExist.firstName;
-      return res.render('userDashboard',{firstName:req.session.firstName});
+      req.session.user={
+       userId:emailExist.id,
+       firstName:emailExist.firstName,
+       role:emailExist.userRole
+      }
+    
+      return res.redirect('/dashboard');
     }else{
       const err="Wrong password";
       return res.render('login',{err,errfield:['password'],values:{email:email,password:password}})
@@ -80,7 +84,7 @@ function handleLogout(req,res){
 req.session.destroy((err)=>{
   if(err){
     console.log("can not logout");
-    return res.render('/userDashboard')
+    return res.render('dashboard')
   }
 
   res.clearCookie('connect-sid');
