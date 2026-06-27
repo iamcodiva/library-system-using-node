@@ -102,4 +102,5 @@ text-align: center;
 main{
   transform: translateX(250px);
   padding:30px ;
+ max-width: calc(100%-250px);
 }
