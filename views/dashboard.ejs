@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Home</title>
   <link rel="stylesheet" href="/css/style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
+
 <body>
   <header>
     <nav class="nav-container">
@@ -16,46 +20,95 @@
       </div>
       <div class="nav-links">
         <div>
-            <button><a href="/logout">Logout</a></button>
+          <button><a href="/logout">Logout</a></button>
         </div>
         <div>
-         
-      </div>
+
+        </div>
     </nav>
     <div class="side-nav">
       <div class="side-nav-container">
-      <div class="option">Overview</div>
-      <% if(role=="Member"){%>
+        <div class="option active" data-dashboard="overview">Overview</div>
+        <% if(role=="Member" ){%>
 
-      <div class="option">Catalog</div>
-      <div class="option">My Borrowing</div>
-      <div class="option">My Finance</div>
-      
-<%  }%>
-<% if(role=='Staff') {%>
-       <div class="option">Catalog and Circulation</div> 
-       <div class="option">Users</div>
-       <div class="option">Borrowing activity</div>
-       <div class="option">Finance</div>
+          <div class="option" data-dashboard="borrow">Catalog</div>
+          <div class="option" data-dashboard="borrow">My Borrowing</div>
+          <div class="option" data-dashboard="finance">My Finance</div>
 
-  <% } %>
-<% if (role=='Admin'){%>
-      <div class="option">Book managment</div> 
-       <div class="option">Borrowing Activity</div>
-       <div class="option">Finance</div>
-       <div class="option">Member Managment</div>
-       <div class="option">Staff and Admin Managment</div>
-       <div class="option">Reports</div>
+          <% }%>
+            <% if(role=='Staff' ) {%>
+              <div class="option" data-dashboard="catalog">Catalog and Circulation</div>
+              <div class="option" data-dashboard="member">Users</div>
+              <div class="option" data-dashboard="borrow">Borrowing activity</div>
+              <div class="option" data-dashboard="finance">Finance</div>
 
-<%} %>
-        <div class="option">Profile</div>
+              <% } %>
+                <% if (role=='Admin' ){%>
+                  <div class="option" data-dashboard="book">Book managment</div>
+                  <div class="option" data-dashboard="borrow">Borrowing Activity</div>
+                  <div class="option" data-dashboard="finance">Finance</div>
+                  <div class="option" data-dashboard="member">Member Managment</div>
+                  <div class="option" data-dashboard="satffAndAdmin">Staff and Admin Managment</div>
+                  <div class="option" data-dashboard="reports">Reports</div>
+
+                  <%} %>
+                    <div class="option" data-dashboard="profile">Profile</div>
       </div>
     </div>
   </header>
   <main>
-  <h1>
-    Hello,<%=locals.firstName  %>(<%= locals.role %>)
-  </h1>
+    <div class="dashboard-panel active-panel" id="overviewDashboard">
+
+    </div>
+    <div class="dashboard-panel" id="bookDashboard">
+      <div class="book-opration">
+        <h1>Overview panel</h1>
+        <form action="" class="book-form">
+          <input type="text">
+          <input type="text">
+          <input type="text">
+          <input type="text">
+          <input type="text">
+          <input type="text">
+          <input type="text">
+        </form>
+        <div class="book-btns">
+          <button class="book-btn">Add</button>
+          <button class="book-btn">Edit</button>
+          <button class="book-btn">Delete</button>
+        </div>
+        <div class="book-table">
+          <table border="1">
+            <tr>
+              <th>Tiltle</th>
+              <th>Author</th>
+              <th>ISBN</th>
+              <th>category</th>
+              <th>price</th>
+              <th>Total</th>
+              <th>Available Left</th>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+    </div>
+    <div class="dashboard-panel" id="borrowDashboard"></div>
+    <div class="dashboard-panel" id="financeDashboard"></div>
+    <div class="dashboard-panel" id="memberDashboard"></div>
+    <div class="dashboard-panel" id="satffAndAdminDashboard"></div>
+    <div class="dashboard-panel" id="reportsDashboard"></div>
   </main>
+  <script src="/js/script.js" defer></script>
 </body>
+
 </html>
