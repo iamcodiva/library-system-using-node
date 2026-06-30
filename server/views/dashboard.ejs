@@ -63,14 +63,21 @@
     <div class="dashboard-panel" id="bookDashboard">
       <div class="book-opration">
         <h1>Overview panel</h1>
-        <form action="" class="book-form">
-          <input type="text">
-          <input type="text">
-          <input type="text">
-          <input type="text">
-          <input type="text">
-          <input type="text">
-          <input type="text">
+        <form action="/dashboard/addbook" class="book-form" method="POST">
+          <input type="text" name="title" placeholder="Add book title">
+          <input type="text" name="author" placeholder="Add book author">
+          <input type="text" name="isbn" placeholder="Add book isbn">
+          
+           <select name="category" id="">
+            <option  value="" selected disabled> Select category</option>
+            <option name="category" value="sci-fi">sci-fi</option>
+            <option name="category" value="finance">finance</option>
+            <option name="category" value="self-help">self-hlep</option>
+            <option name="category" value="biography">biography</option>
+           </select>
+          <input type="number" name="price" step="0.5" placeholder="Add book price">
+          <input type="number" name="total" step="1" placeholder="Add total book ">
+          <input type="submit" value="Add">
         </form>
         <div class="book-btns">
           <button class="book-btn">Add</button>
@@ -88,15 +95,17 @@
               <th>Total</th>
               <th>Available Left</th>
             </tr>
+           <% books.forEach((book)=>{ %> 
             <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
+              <td><%=book.Title%></td>
+              <td><%=book.Author%></td>
+              <td><%=book.Isbn%></td>
+              <td><%=book.category%></td>
+              <td><%=book.Price%></td>
+              <td><%=book.Total%></td>
               <td></td>
             </tr>
+            <% }) %>
           </table>
         </div>
       </div>
